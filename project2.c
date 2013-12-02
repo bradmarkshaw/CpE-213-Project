@@ -1,5 +1,5 @@
 #include "stdio.h"
-#include "reg392.h"
+#include "reg932.h"
 
 #define CPU_CLK = 7372800
 #define BUZZER
