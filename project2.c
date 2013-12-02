@@ -46,4 +46,4 @@ sbit BZZR = P1^7
 #define C7				((CPU_CLK/4)/2093.0)
 #define D7				((CPU_CLK/4)/2349.3)
 
-#endif //BUZZER
+#endif //BUZZER sdf
