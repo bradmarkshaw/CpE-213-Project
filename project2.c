@@ -46,4 +46,100 @@ sbit BZZR = P1^7
 #define C7				((CPU_CLK/4)/2093.0)
 #define D7				((CPU_CLK/4)/2349.3)
 
-#endif //BUZZER sdf
+#endif //BUZZER
+
+#include <time.h>
+#include <stdlib.h>
+
+void delayProg();
+
+sbit TOPLEFTLIGHT = P2^4;
+sbit TOPLEFTBUTTON = P2^0;
+sbit TOPMIDDLELIGHT = P0^5;
+sbit TOPMIDDLEBUTTON = P0^1;
+sbit TOPLEFTLIGHT = P2^7;
+sbit TOPLEFTBUTTON = P2^3;
+sbit MIDDLELEFTLIGHT = P0^6;
+sbit MIDDLELEFTBUTTON = P0^2;
+sbit MIDDLELIGHT = P1^6;
+sbit MIDDLEBUTTON = P1^4;
+
+
+void main()
+{
+  srand(time(NULL));
+  int randNum = (rand() % 999) + 1;
+  int numGuesses = 0;
+  int guess = 0;
+  bool correctGuess = false;
+  
+  
+
+	while (numGuesses != 10 && !correctGuess)
+	{
+		nuguess = 0;
+			
+		do
+		{
+			if (TOPLEFTBUTTON == 1)
+			{
+				guess += 100;
+				TOPLEFTLIGHT = ~TOPLEFTLIGHT;
+				delayProg();
+				TOPLEFTLIGHT = ~TOPLEFTLIGHT;
+			}
+			if (TOPMIDDLEBUTTON == 1)
+			{ 
+			 guess += 10;
+			 TOPMIDDLELIGHT = ~TOPMIDDLELIGHT;
+			 delayProg();
+			 TOPMIDDLELIGHT = ~TOPMIDDLELIGHT;
+			}
+			if (TOPRIGHTBUTTON == 1)
+			{
+				guess += 1;
+				TOPRIGHTLIGHT = ~TOPRIGHTLIGHT;
+				delayProg();
+				TOPRIGHTLIGHT = ~TOPRIGHTLIGHT;
+			}
+			if (MIDDLELEFTBUTTON == 1)
+			{
+				guess = 0;
+				MIDDLELEFTLIGHT = ~MIDDLELEFTLIGHT;
+				delayProg();
+				MIDDLELEFTLIGHT = ~MIDDLELEFTLIGHT;
+			}
+			if (MIDDLEBUTTON = 1)
+			{
+				submitGuess = true;
+				MIDDLELIGHT = ~MIDDLELIGHT;
+				delayProg();
+				MIDDLELIGHT = ~MIDDLELIGHT;
+			}
+		}
+		while (submitGuess != true);
+
+		if (guess == randNum)
+		{
+			correctGuess = true;
+			//victory sounds
+		}  
+		else if(guess < randNum)
+		{
+			numGuesses++;
+			//play high note 
+		}
+		else if(guess > randNum)
+		{
+			numGuesses++;
+			//play low note
+		}
+	}
+
+}
+
+void delayProg()
+{
+  for (int i = 0; i < 30000; i++)
+    for (int j = 0; j < 30000; j++)
+}
