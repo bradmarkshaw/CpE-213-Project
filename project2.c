@@ -5,7 +5,7 @@
 #include "intrins.h"
 
 #define CPU_CLK 7372800
-#define MAX_DEL 65536   //Max delay for 8051 in microseconds
+#define MAX_DEL 65536 //Max delay for 8051 in microseconds
 
 //Speaker note frequencies					
 #define C4  262
@@ -143,45 +143,43 @@ void main()
   {//--note frequencies--
   }
   
-  
-  
   void delayMs(10000);
 
-	while (numGuesses != 10 && !correctGuess)
+	while(numGuesses != 10 && !correctGuess)
 	{
 		nuguess = 0;
 			
 		do
 		{
-			if (TOPLEFTBUTTON == 1)
+			if(TOPLEFTBUTTON == 1)
 			{
 				guess += 100;
 				TOPLEFTLIGHT = ~TOPLEFTLIGHT;
 				delayProg();
 				TOPLEFTLIGHT = ~TOPLEFTLIGHT;
 			}
-			if (TOPMIDDLEBUTTON == 1)
+			if(TOPMIDDLEBUTTON == 1)
 			{ 
-			 guess += 10;
-			 TOPMIDDLELIGHT = ~TOPMIDDLELIGHT;
-			 delayProg();
-			 TOPMIDDLELIGHT = ~TOPMIDDLELIGHT;
+        guess += 10;
+        TOPMIDDLELIGHT = ~TOPMIDDLELIGHT;
+        delayProg();
+        TOPMIDDLELIGHT = ~TOPMIDDLELIGHT;
 			}
-			if (TOPRIGHTBUTTON == 1)
+			if(TOPRIGHTBUTTON == 1)
 			{
 				guess += 1;
 				TOPRIGHTLIGHT = ~TOPRIGHTLIGHT;
 				delayProg();
 				TOPRIGHTLIGHT = ~TOPRIGHTLIGHT;
 			}
-			if (MIDDLELEFTBUTTON == 1)
+			if(MIDDLELEFTBUTTON == 1)
 			{
 				guess = 0;
 				MIDDLELEFTLIGHT = ~MIDDLELEFTLIGHT;
 				delayProg();
 				MIDDLELEFTLIGHT = ~MIDDLELEFTLIGHT;
 			}
-			if (MIDDLEBUTTON = 1)
+			if(MIDDLEBUTTON = 1)
 			{
 				submitGuess = true;
 				MIDDLELIGHT = ~MIDDLELIGHT;
@@ -189,9 +187,9 @@ void main()
 				MIDDLELIGHT = ~MIDDLELIGHT;
 			}
 		}
-		while (submitGuess != true);
+		while(submitGuess != true);
 
-		if (guess == randNum)
+		if(guess == randNum)
 		{
 			correctGuess = true;
 			//victory sounds
@@ -207,19 +205,16 @@ void main()
 			//play low note
 		}
 	}
-
 }
 
 void delayMs(unsigned char ms)
 {
   unsigned long us = 1000*ms;
-
   while (us--)
   {
     _nop_();
   }
 }
-
 
 //delayMs(duration) is a better function to use.
 /*void delayProg()
