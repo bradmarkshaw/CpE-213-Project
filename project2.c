@@ -150,6 +150,63 @@ void stopSong()
   SPEAKER = 1; //off
 }
 
+void randomLightUp()
+{
+  TOPLEFTLIGHT == 0;
+  TOPMIDDLELIGHT == 0;
+  TOPRIGHTLIGHT == 0;
+  MIDDLELEFTLIGHT == 0;
+  MIDDLELIGHT == 0;
+  MIDDLERIGHTLIGHT == 0;
+  BOTTOMLEFTLIGHT == 0;
+  BOTTOMMIDDLELIGHT == 0;
+  BOTTOMRIGHTLIGHT == 0;
+  
+  int num;
+  num = (rand()% 7);
+  switch (num)
+  {
+    case 0:
+	  TOPLEFTLIGHT == 1;
+	  TOPMIDDLELIGHT == 1;
+	break;
+    case 1:
+	  TOPMIDDLELIGHT == 1;
+	  BOTTOMMIDDLELIGHT == 1;
+	break;
+    case 2:
+	  TOPRIGHTLIGHT == 1;
+	  MIDDLERIGHTLIGHT == 1;
+	break;
+    case 3:
+	  MIDDLELEFTLIGHT == 1;
+	  MIDDLELIGHT == 1;
+	break;
+    case 4:
+	  BOTTOMLEFTLIGHT == 1;
+	  BOTTOMMIDDLELIGHT == 1;
+	break;
+    case 5:
+	  BOTTOMRIGHTLIGHT == 1;
+	  MIDDLELIGHT == 1;
+	break;
+	case 6:
+	  MIDDLELEFTLIGHT == 1;
+	  BOTTOMLEFTLIGHT == 1;
+	break;
+    default:
+	  TOPLEFTLIGHT == 1;
+	  TOPMIDDLELIGHT == 1;
+	  TOPRIGHTLIGHT == 1;
+	  MIDDLELEFTLIGHT == 1;
+	  MIDDLELIGHT == 1;
+	  MIDDLERIGHTLIGHT == 1;
+	  BOTTOMLEFTLIGHT == 1;
+	  BOTTOMMIDDLELIGHT == 1;
+	  BOTTOMRIGHTLIGHT == 1;
+  break;
+ }
+
 void main()
 {
   //Game initializations
