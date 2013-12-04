@@ -60,6 +60,16 @@ sbit MIDDLELEFTBUTTON = P0^2;
 sbit MIDDLELIGHT = P1^6;
 sbit MIDDLEBUTTON = P1^4;
 
+bit playEnable = 0;
+unsigned int playCounter = 0;
+unsigned char i = 0;
+code unsigned int nyanDuration[] = 
+{//--note durations--
+}
+code unsigned int nyanFreq[] =
+{//--note frequencies--
+}
+
 void noteGen(unsigned int note, unsigned int duration)
 {
   unsigned long tmp;
@@ -113,13 +123,27 @@ T0ISR() interrupt 1
         else
         {
           TR2 = 0;
-          SPEAKER = 1;
+          SPEAKER = 1; //off
         }
       }
     }
   }
   TH0 = 0xDC;
   TL0 = 0x00;
+}
+
+void startSong()
+{
+  i = 0;
+  playEnable = 1;
+  playCounter = 1;
+}
+
+void stopSong()
+{
+  playEnable = 0;
+  TR2 = 0;
+  SPEAKER = 1; //off
 }
 
 void main()
@@ -133,15 +157,6 @@ void main()
   
   //Song initializations
   initT0();
-  bit playEnable = 0;
-  unsigned int playCounter = 0;
-  unsigned char i = 0;
-  code unsigned int nyanDuration[] = 
-  {//--note durations--
-  }
-  code unsigned int nyanFreq[] =
-  {//--note frequencies--
-  }
   
   void delayMs(10000);
 
